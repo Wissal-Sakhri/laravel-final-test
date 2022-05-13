@@ -1,0 +1,1323 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CBOT ADMIN & STORE APIs",
+    "description": "sample description for admins and stores apis with authentification & authorisation handling",
+    "version": "0.1"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Admin",
+      "description": "EveryThing about your admins"
+    },
+    {
+      "name": "Store",
+      "description": "Everything about your stores"
+    }
+  ],
+  "paths": {
+    "/api/ecommerce/admin/{admin_id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Display Admin by ID",
+        "description": "returns a single admin",
+        "parameters": [
+          {
+            "name": "admin_id",
+            "in": "path",
+            "description": "ID of admin to returns",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email_admin": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "password_admin": {
+                      "type": "string"
+                    },
+                    "admin_id": {
+                      "type": "integer"
+                    },
+                    "phone_admin": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "address_admin": {
+                      "type": "string"
+                    },
+                    "status_admin": {
+                      "type": "string"
+                    },
+                    "name_admin": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cas ou l'admin n'existe pas dans la base des données",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Admin Not Found": {
+                    "value": "{\"error\":\"404\",\"message\":\"Admin Does Not Exist! Please Re-check Your Admin's List!\"}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Update an admin",
+        "parameters": [
+          {
+            "name": "admin_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "name_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "phone_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Admin Modified Successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email_admin": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "password_admin": {
+                      "type": "string"
+                    },
+                    "admin_id": {
+                      "type": "integer"
+                    },
+                    "phone_admin": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "address_admin": {
+                      "type": "string"
+                    },
+                    "status_admin": {
+                      "type": "string"
+                    },
+                    "name_admin": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"admin_id\":5,\"name_admin\":\"wissalHasModifiedHerName\",\"email_admin\":\"wissal@gmail.com\",\"phone_admin\":\"222222\",\"password_admin\":\"password\",\"address_admin\":\"addressWissal\",\"status_admin\":\"1\",\"created_at\":\"2022-04-27T02:38:23.000000Z\",\"updated_at\":\"2022-04-27T02:40:09.000000Z\"}"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cas ou l'admin n'existe pas dans la base des données",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Admin Not Found": {
+                    "value": "{\"error\":\"404\",\"message\":\"Admin Does Not Exist!\"}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Delete and admin",
+        "parameters": [
+          {
+            "name": "admin_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Admin Deleted With Success",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Success !": {
+                    "value": "{\"error\":\"204\",\"message\":\"Admin Deleted With Success!\"}"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cas ou l'admin n'existe pas dans la base des données",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Admin Not Found": {
+                    "value": "{\"error\":\"404\",\"message\":\"Admin Does Not Exist  please Re-check\"}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://127.0.0.1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://127.0.0.1"
+        }
+      ]
+    },
+    "/api/ecommerce/admin": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Registrate a new Admin Via the register authentification method",
+        "parameters": [
+          {
+            "name": "email_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issataleb%40gmail.com"
+          },
+          {
+            "name": "password_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "password"
+          },
+          {
+            "name": "phone_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "225522"
+          },
+          {
+            "name": "API_PASSWORD",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "CfXCcxNyDRildcIBjNq0wOilFo6HKJj"
+          },
+          {
+            "name": "address_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "addressIssa"
+          },
+          {
+            "name": "name_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issa"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success !",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "admin": {
+                      "type": "object",
+                      "properties": {
+                        "email_admin": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "password_admin": {
+                          "type": "string"
+                        },
+                        "phone_admin": {
+                          "type": "string"
+                        },
+                        "admin_id": {
+                          "type": "integer"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "address_admin": {
+                          "type": "string"
+                        },
+                        "name_admin": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"token\":\"8|b0DEN4Hs5KgSmyKqqfQflVylqLIaQcs3l1HRWKzQ\",\"admin\":{\"name_admin\":\"issa\",\"email_admin\":\"issataleb@gmail.com\",\"password_admin\":\"$2y$10$liXA0S5M.s1UHkfMOAojpudLVU4FhwksLbLFpRZvpt8TA75mwaR9.\",\"phone_admin\":\"225522\",\"address_admin\":\"addressIssa\",\"updated_at\":\"2022-04-27T02:32:01.000000Z\",\"created_at\":\"2022-04-27T02:32:01.000000Z\",\"admin_id\":4}}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "list All Admins",
+        "description": "list all admin in our plateform",
+        "operationId": "listAdmins",
+        "responses": {
+          "default": {
+            "description": "Default error sample response"
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
+    "/api/ecommerce/admin/logout": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Log Out an Admin",
+        "responses": {
+          "200": {
+            "description": "Logged Out",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"message\":\"User successfully signed out\"}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://127.0.0.1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://127.0.0.1"
+        }
+      ]
+    },
+    "/api/ecommerce/admin/login": {
+      "post": {
+        "summary": "adminlogin",
+        "description": "log in your admin",
+        "operationId": "loginAdmin",
+        "parameters": [
+          {
+            "name": "email_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issataleb%40gmail.com"
+          },
+          {
+            "name": "password_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "password"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default error sample response"
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://127.0.0.1"
+        }
+      ]
+    },
+    "/api/ecommerce/stores/{store_id}": {
+      "get": {
+        "tags": [
+          "Store"
+        ],
+        "summary": "Display Store by ID",
+        "description": "returns a single Store",
+        "parameters": [
+          {
+            "name": "store_id",
+            "in": "path",
+            "description": "ID of admin to returns",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Display a specified Store",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "store": {
+                      "type": "object",
+                      "properties": {
+                        "store_id": {
+                          "type": "integer"
+                        },
+                        "policy_link_store": {
+                          "type": "string"
+                        },
+                        "state_store": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "favicon_store": {
+                          "type": "string"
+                        },
+                        "term_use_link_store": {
+                          "type": "string"
+                        },
+                        "email_store": {
+                          "type": "string"
+                        },
+                        "country_store": {
+                          "type": "string"
+                        },
+                        "name_store": {
+                          "type": "string"
+                        },
+                        "city_store": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "status_store": {
+                          "type": "string"
+                        },
+                        "logo_store": {
+                          "type": "string"
+                        },
+                        "street_store": {
+                          "type": "string"
+                        },
+                        "tax_percentage_store": {
+                          "type": "string"
+                        },
+                        "admin_id": {
+                          "type": "integer"
+                        },
+                        "qr_code_store": {
+                          "type": "string"
+                        },
+                        "zip_store": {
+                          "type": "string"
+                        },
+                        "currency_store": {
+                          "type": "string"
+                        },
+                        "phone_store": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"status\":true,\"msg\":\"\",\"store\":{\"store_id\":4,\"name_store\":\"issa_Store\",\"logo_store\":\"issa_store_logo\",\"favicon_store\":\"issa_store_favicon\",\"email_store\":\"issa_store@hmail.com\",\"phone_store\":\"225588\",\"country_store\":\"Tunisia\",\"city_store\":\"tunis\",\"state_store\":\"tunis\",\"zip_store\":\"25852\",\"street_store\":\"streetTunis\",\"currency_store\":\"TND\",\"tax_percentage_store\":\"4.50\",\"term_use_link_store\":\"terms_issa_link\",\"policy_link_store\":\"policy_store_link\",\"qr_code_store\":\"qr_code_issa_store\",\"status_store\":\"open\",\"admin_id\":2,\"created_at\":\"2022-04-27T02:54:49.000000Z\",\"updated_at\":\"2022-04-27T02:54:49.000000Z\"}}"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cas ou l'admin n'existe pas dans la base des données",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Store Does not exist": {
+                    "value": "{\"error\":\"404\",\"message\":\"Store Does Not Exist!\"}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://127.0.0.1"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Store"
+        ],
+        "summary": "Display Store by ID",
+        "description": "returns a single Store",
+        "parameters": [
+          {
+            "name": "store_id",
+            "in": "path",
+            "description": "ID of admin to returns",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "name_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ModifiedStoreName"
+          },
+          {
+            "name": "email_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Modified@email.com"
+          },
+          {
+            "name": "logo_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ModifiedLogo"
+          },
+          {
+            "name": "phone_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "M25852"
+          },
+          {
+            "name": "favicon_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "country_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "city_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "street_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "zip_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "currency_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tax_percentage_store",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "term_use_link_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "policy_link_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success ! ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "storeUpdate": {
+                      "type": "object",
+                      "properties": {
+                        "store_id": {
+                          "type": "integer"
+                        },
+                        "policy_link_store": {
+                          "type": "string"
+                        },
+                        "state_store": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "favicon_store": {
+                          "type": "string"
+                        },
+                        "term_use_link_store": {
+                          "type": "string"
+                        },
+                        "email_store": {
+                          "type": "string"
+                        },
+                        "country_store": {
+                          "type": "string"
+                        },
+                        "name_store": {
+                          "type": "string"
+                        },
+                        "city_store": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "status_store": {
+                          "type": "string"
+                        },
+                        "logo_store": {
+                          "type": "string"
+                        },
+                        "street_store": {
+                          "type": "string"
+                        },
+                        "tax_percentage_store": {
+                          "type": "string"
+                        },
+                        "admin_id": {
+                          "type": "integer"
+                        },
+                        "qr_code_store": {
+                          "type": "string"
+                        },
+                        "zip_store": {
+                          "type": "string"
+                        },
+                        "currency_store": {
+                          "type": "string"
+                        },
+                        "phone_store": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"status\":true,\"storeUpdate\":{\"store_id\":4,\"name_store\":\"issaHasModifiedHisStoreName\",\"logo_store\":\"issa_store_logo\",\"favicon_store\":\"issa_store_favicon\",\"email_store\":\"issa_store@hmail.com\",\"phone_store\":\"225588\",\"country_store\":\"Tunisia\",\"city_store\":\"tunis\",\"state_store\":\"tunis\",\"zip_store\":\"25852\",\"street_store\":\"streetTunis\",\"currency_store\":\"TND\",\"tax_percentage_store\":\"4.50\",\"term_use_link_store\":\"terms_issa_link\",\"policy_link_store\":\"policy_store_link\",\"qr_code_store\":\"qr_code_issa_store\",\"status_store\":\"open\",\"admin_id\":2,\"created_at\":\"2022-04-27T02:54:49.000000Z\",\"updated_at\":\"2022-04-27T02:57:39.000000Z\"},\"msg\":\"store updated successfully!\"}"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cas ou l'admin n'existe pas dans la base des données",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Store Does Not Exist": {
+                    "value": "{\"error\":\"404\",\"message\":\"Store Does Not Exist!\"}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://127.0.0.1"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Store"
+        ],
+        "description": "delete a store by ID",
+        "parameters": [
+          {
+            "name": "store_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Store deleted successfully"
+          },
+          "404": {
+            "description": "Cas ou l'admin n'existe pas dans la base des données",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Store Does Not Exist": {
+                    "value": "{\"error\":\"404\",\"message\":\"Store Does Not Exist!\"}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://127.0.0.1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://127.0.0.1"
+        }
+      ]
+    },
+    "/api/ecommerce/store": {
+      "get": {
+        "tags": [
+          "Store"
+        ],
+        "description": "Display All Stores",
+        "responses": {
+          "200": {
+            "description": "Success ! ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "stores": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "store_id": {
+                            "type": "integer"
+                          },
+                          "policy_link_store": {
+                            "type": "string"
+                          },
+                          "state_store": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "favicon_store": {
+                            "type": "string"
+                          },
+                          "term_use_link_store": {
+                            "type": "string"
+                          },
+                          "email_store": {
+                            "type": "string"
+                          },
+                          "country_store": {
+                            "type": "string"
+                          },
+                          "name_store": {
+                            "type": "string"
+                          },
+                          "city_store": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "status_store": {
+                            "type": "string"
+                          },
+                          "logo_store": {
+                            "type": "string"
+                          },
+                          "street_store": {
+                            "type": "string"
+                          },
+                          "tax_percentage_store": {
+                            "type": "string"
+                          },
+                          "admin_id": {
+                            "type": "integer"
+                          },
+                          "qr_code_store": {
+                            "type": "string"
+                          },
+                          "zip_store": {
+                            "type": "string"
+                          },
+                          "currency_store": {
+                            "type": "string"
+                          },
+                          "phone_store": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"status\":true,\"msg\":\"\",\"stores\":[{\"store_id\":4,\"name_store\":\"issa_Store\",\"logo_store\":\"issa_store_logo\",\"favicon_store\":\"issa_store_favicon\",\"email_store\":\"issa_store@hmail.com\",\"phone_store\":\"225588\",\"country_store\":\"Tunisia\",\"city_store\":\"tunis\",\"state_store\":\"tunis\",\"zip_store\":\"25852\",\"street_store\":\"streetTunis\",\"currency_store\":\"TND\",\"tax_percentage_store\":\"4.50\",\"term_use_link_store\":\"terms_issa_link\",\"policy_link_store\":\"policy_store_link\",\"qr_code_store\":\"qr_code_issa_store\",\"status_store\":\"open\",\"admin_id\":2,\"created_at\":\"2022-04-27T02:54:49.000000Z\",\"updated_at\":\"2022-04-27T02:54:49.000000Z\"}]}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://127.0.0.1"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Store"
+        ],
+        "description": "Add New Store",
+        "parameters": [
+          {
+            "name": "policy_link_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "policy_store_link"
+          },
+          {
+            "name": "state_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "tunis"
+          },
+          {
+            "name": "favicon_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issa_store_favicon"
+          },
+          {
+            "name": "term_use_link_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "terms_issa_link"
+          },
+          {
+            "name": "email_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issa_store%40hmail.com"
+          },
+          {
+            "name": "country_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Tunisia"
+          },
+          {
+            "name": "name_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issa_Store"
+          },
+          {
+            "name": "city_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "tunis"
+          },
+          {
+            "name": "status_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "open"
+          },
+          {
+            "name": "logo_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issa_store_logo"
+          },
+          {
+            "name": "street_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "streetTunis"
+          },
+          {
+            "name": "tax_percentage_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "4.5"
+          },
+          {
+            "name": "admin_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2"
+          },
+          {
+            "name": "qr_code_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "qr_code_issa_store"
+          },
+          {
+            "name": "zip_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "25852"
+          },
+          {
+            "name": "currency_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "TND"
+          },
+          {
+            "name": "phone_store",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "225588"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Store added successfully ! ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "store": {
+                      "type": "object",
+                      "properties": {
+                        "store_id": {
+                          "type": "integer"
+                        },
+                        "policy_link_store": {
+                          "type": "string"
+                        },
+                        "state_store": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "favicon_store": {
+                          "type": "string"
+                        },
+                        "term_use_link_store": {
+                          "type": "string"
+                        },
+                        "email_store": {
+                          "type": "string"
+                        },
+                        "country_store": {
+                          "type": "string"
+                        },
+                        "name_store": {
+                          "type": "string"
+                        },
+                        "city_store": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "status_store": {
+                          "type": "string"
+                        },
+                        "logo_store": {
+                          "type": "string"
+                        },
+                        "street_store": {
+                          "type": "string"
+                        },
+                        "tax_percentage_store": {
+                          "type": "string"
+                        },
+                        "admin_id": {
+                          "type": "string"
+                        },
+                        "qr_code_store": {
+                          "type": "string"
+                        },
+                        "zip_store": {
+                          "type": "string"
+                        },
+                        "currency_store": {
+                          "type": "string"
+                        },
+                        "phone_store": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"status\":true,\"msg\":\"\",\"store\":{\"name_store\":\"issa_Store\",\"logo_store\":\"issa_store_logo\",\"favicon_store\":\"issa_store_favicon\",\"email_store\":\"issa_store@hmail.com\",\"phone_store\":\"225588\",\"country_store\":\"Tunisia\",\"city_store\":\"tunis\",\"state_store\":\"tunis\",\"zip_store\":\"25852\",\"street_store\":\"streetTunis\",\"currency_store\":\"TND\",\"tax_percentage_store\":\"4.5\",\"term_use_link_store\":\"terms_issa_link\",\"policy_link_store\":\"policy_store_link\",\"qr_code_store\":\"qr_code_issa_store\",\"status_store\":\"open\",\"admin_id\":\"2\",\"updated_at\":\"2022-04-27T02:54:49.000000Z\",\"created_at\":\"2022-04-27T02:54:49.000000Z\",\"store_id\":4}}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://127.0.0.1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://127.0.0.1"
+        }
+      ]
+    },
+    "/api/ecommerce/register": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Registrate a new Admin Via the register authentification method",
+        "parameters": [
+          {
+            "name": "email_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issataleb%40gmail.com"
+          },
+          {
+            "name": "password_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "password"
+          },
+          {
+            "name": "phone_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "225522"
+          },
+          {
+            "name": "API_PASSWORD",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "CfXCcxNyDRildcIBjNq0wOilFo6HKJj"
+          },
+          {
+            "name": "address_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "addressIssa"
+          },
+          {
+            "name": "name_admin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "issa"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success !",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "admin": {
+                      "type": "object",
+                      "properties": {
+                        "email_admin": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "password_admin": {
+                          "type": "string"
+                        },
+                        "phone_admin": {
+                          "type": "string"
+                        },
+                        "admin_id": {
+                          "type": "integer"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "address_admin": {
+                          "type": "string"
+                        },
+                        "name_admin": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\"token\":\"8|b0DEN4Hs5KgSmyKqqfQflVylqLIaQcs3l1HRWKzQ\",\"admin\":{\"name_admin\":\"issa\",\"email_admin\":\"issataleb@gmail.com\",\"password_admin\":\"$2y$10$liXA0S5M.s1UHkfMOAojpudLVU4FhwksLbLFpRZvpt8TA75mwaR9.\",\"phone_admin\":\"225522\",\"address_admin\":\"addressIssa\",\"updated_at\":\"2022-04-27T02:32:01.000000Z\",\"created_at\":\"2022-04-27T02:32:01.000000Z\",\"admin_id\":4}}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://127.0.0.1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://127.0.0.1"
+        }
+      ]
+    }
+  }
+}
